@@ -2,12 +2,15 @@
   "name": "solid-fundamentals",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start:dev": "tsx watch src/server.ts",
     "start": "node build/server.js",
     "build": "tsup src --out-dir build",
     "biome": "biome check --write .",
-    "test": "vitest"
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
   "keywords": [],
   "author": "",
@@ -17,10 +20,13 @@
     "@biomejs/biome": "1.9.4",
     "@types/bcryptjs": "2.4.6",
     "@types/node": "22.9.0",
+    "@vitest/coverage-v8": "2.1.5",
     "prisma": "5.22.0",
     "tsup": "8.3.5",
     "tsx": "4.19.2",
-    "typescript": "5.6.3"
+    "typescript": "5.6.3",
+    "vite-tsconfig-paths": "5.1.2",
+    "vitest": "2.1.5"
   },
   "dependencies": {
     "@prisma/client": "5.22.0",
