@@ -8,6 +8,8 @@ import { env } from './env'
 
 import { usersRoutes } from './http/controllers/users/routes/routes'
 
+import { gymsRoutes } from './http/controllers/gyms/routes/routes'
+
 export const app = fastify()
 
 app.register(fastifyJwt, {
@@ -19,6 +21,7 @@ app.get('/healthcheck', async () => {
 })
 
 app.register(usersRoutes)
+app.register(gymsRoutes)
 
 app.setErrorHandler((error, _, reply) => {
   if (error instanceof ZodError) {
