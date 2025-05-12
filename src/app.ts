@@ -10,6 +10,8 @@ import { usersRoutes } from './http/controllers/users/routes/routes'
 
 import { gymsRoutes } from './http/controllers/gyms/routes/routes'
 
+import { checkInsRoutes } from './http/controllers/check-ins/routes/routes'
+
 export const app = fastify()
 
 app.register(fastifyJwt, {
@@ -22,6 +24,7 @@ app.get('/healthcheck', async () => {
 
 app.register(usersRoutes)
 app.register(gymsRoutes)
+app.register(checkInsRoutes)
 
 app.setErrorHandler((error, _, reply) => {
   if (error instanceof ZodError) {
