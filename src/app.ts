@@ -11,11 +11,21 @@ import { usersRoutes } from './http/controllers/users/routes/routes'
 import { gymsRoutes } from './http/controllers/gyms/routes/routes'
 
 import { checkInsRoutes } from './http/controllers/check-ins/routes/routes'
+import fastifyCookie from '@fastify/cookie'
 
 export const app = fastify()
 
+app.register(fastifyCookie)
+
 app.register(fastifyJwt, {
   secret: env.JWT_SECRET,
+  cookie: {
+    cookieName: 'refreshToken',
+    signed: false,
+  },
+  sign: {
+    expiresIn: '10m',
+  },
 })
 
 app.get('/healthcheck', async () => {
